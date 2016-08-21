@@ -1,0 +1,26 @@
+/*-------------------COLORS------------------------*/
+$color-red: #d20204;
+$color-black: #000;
+$color-white: #fff;
+$color-yellow: #ffcc00;
+$color-green: #83bf17;
+$color-blue: #009EE3;
+$color-magenta: #E5007D;
+
+
+/*-------------------TYPO------------------------*/
+@import 'https://fonts.googleapis.com/css?family=Advent+Pro:300,400';
+@import 'https://fonts.googleapis.com/css?family=Rambla:400,400i,700,700i';
+
+$font-accent: 'Advent Pro', sans-serif;
+$font-main: 'Rambla', sans-serif;
+
+/*-------------------INTERACTIONS------------------------*/
+$transition-velocity: 0.3s;
+
+/*-------------------LAYERS----------------------------*/
+$capa0: -100;
+$capa1: 100;
+$capa2: 500;
+$capa3: 1000;
+$capa4: 9999;
