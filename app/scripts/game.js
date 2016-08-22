@@ -605,6 +605,7 @@ Runner.prototype = {
   /**
    * Convert Gamepad input events to keydown/up events (spacebar)
   */
+  /*
   pollGamepads: function() {
     var gamepads = navigator.getGamepads();
     var keydown = false;
@@ -627,7 +628,7 @@ Runner.prototype = {
       event.metaKey = false;
       document.dispatchEvent(event);
     }
-  },
+  },*/
 
   /**
    * Remove all listeners.

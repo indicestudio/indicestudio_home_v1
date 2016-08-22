@@ -39,6 +39,32 @@ jQuery(document).ready(function(){
   });
 */
 
+/* ----typed js ------*/
+$('.header-subtitle').typed({
+  strings: ['Indicestudio.', 'Multimedia.', 'Conocimiento.', 'Dedicados.'],
+  typeSpeed: 140,
+  showCursor: false,
+  loop: true,
+  backSpeed: 40
+});
+
+
+/* scroll reveal */
+window.sr = ScrollReveal({
+  duration: 1000,
+  delay: 150,
+  scale: 0.5,
+  mobile: false,
+  //reset: true,
+  //origin: top
+});
+
+sr.reveal('.display-title');
+sr.reveal('.display-paragraph', {delay:750});
+sr.reveal('.red-logo', 300);
+
+
+
 window.onkeydown = function(e) { 
   return !(e.keyCode == 32);
 };
