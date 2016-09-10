@@ -1,0 +1,195 @@
+/*-----------------------MOBILE FIRST---------------------------*/
+  
+/* general */
+* { 
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Custom, iPhone Retina */ 
+
+@media only screen and (min-width : 320px) {
+
+    #contacto {
+        background-color: $color-green;
+        .contact-box {
+            flex-direction: column;
+            text-align: center;
+            border-style: none;
+            border-radius: 0;
+            box-shadow: none;
+            .vertical-line {
+                display: none;
+            }
+            .main-logo {
+                //margin-top: 40px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .contact-form {
+                margin-top: 35px;
+                //margin: 35px auto 70px 70px;
+                //border: 7px solid $color-yellow;
+                border-radius: 5px;
+                //padding: 10px;
+            }
+            .redes-sociales {
+                margin-top: 35px;
+                svg {
+                    width: 50px;
+                    margin-left: 0;
+                }    
+            }    
+        }
+    
+    }
+
+    #que {
+        canvas {
+            position: fixed;
+            bottom: 0;
+        }
+
+    }
+
+
+    .container {
+        width: auto;
+    }
+    #info-nav {
+        display: none;
+    }
+    .inner-menu {
+        font-size: 24px;
+    }
+    .flex-container {
+        padding: 0;
+    }
+    .display-title h1 {
+        font-size: 2rem;
+    }
+    .display-paragraph p {
+        font-size: 1em;
+    }
+    .service-item {
+        width: 50%;
+    }
+
+}
+
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+    .container {
+        width: 576px;
+    }
+    #contacto > .contact-box {
+        flex-direction: row;
+        text-align: left;
+        .vertical-line {
+            display: none;
+        }
+        .main-logo {
+            margin-right: 2.5em;
+            svg {
+                width: 75px;
+            }
+        }
+        .contact-form {
+            h2 {
+                display: none;
+            }
+            margin: 0;
+            border: none;
+            border-radius: 5px;
+            padding: 0;
+        }
+        .redes-sociales{ 
+            svg {
+                width: 50px;
+                margin: 0
+            }
+        }
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .container {
+        width: 720px;
+    }
+    .inner-menu {
+        font-size: 2em;
+    }
+    .flex-container {
+        padding: 0 6em;
+    }
+    .display-title h1 {
+        font-size: 4rem;
+    }
+    .display-paragraph p {
+        font-size: 1.2em;
+    }
+    .service-item {
+        width: 25%;
+    }
+    #que {
+        canvas {
+            position: absolute;
+            transform:translateY(0);
+        }
+    }
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+    .container {
+        width: 940px;
+    }
+    #info-nav {
+        display: block;
+    }
+    #contacto {
+        background-color: $color-yellow;
+    }
+    #contacto > .contact-box {
+        flex-direction: row;
+        text-align: left;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        .vertical-line {
+            display: block;
+        }
+        .main-logo {
+            margin: 70px 70px 0 70px;
+        }
+        .contact-form {
+            h2 {
+                display: inline-block;
+            }
+            margin: 70px 0 40px 70px;
+            border: none;
+            border-radius: 5px;
+            padding: 0;
+        }
+        .redes-sociales > svg {
+            width: 50px;
+        }
+    }
+
+    #que {
+        .social-media {
+            flex-direction: row;
+        }
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+

@@ -1,6 +1,10 @@
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
+
+if ($('#porque').length) {
+
+
 (function() {
 'use strict';
 /**
@@ -10,8 +14,11 @@
  * @constructor
  * @export
  */
+
 function Runner(outerContainerId, opt_config) {
   // Singleton
+
+
   if (Runner.instance_) {
     return Runner.instance_;
   }
@@ -2466,6 +2473,8 @@ Horizon.prototype = {
     }
   },
 
+
+
   /**
    * Returns whether the previous two obstacles are the same as the next one.
    * Maximum duplication is set in config value MAX_OBSTACLE_DUPLICATION.
@@ -2507,9 +2516,13 @@ Horizon.prototype = {
     this.clouds.push(new Cloud(this.canvas, this.spritePos.CLOUD,
         this.dimensions.WIDTH));
   }
+
 };
 })();
 
 //start the game
 new Runner('.interstitial-wrapper');
+
+}
+
 

@@ -1,7 +1,27 @@
 @import '_variables.scss';
 @import '_game.scss';
 
+/*-----------------------MODERNIZR---------------------------*/
+.no-svg,
+.no-canvas,
+.no-inline-svg,
+.no-madiqueries,
+.no-flexbox,
+.no-flexwrap,
+.no-csstransitions,
+.no-datauri section {
+	&:after {
+		content: "LO SENTIMOS, PARA OBTENER LA MÁXIMA EXPERIENCIA DEBE ACTUALIZAR SU EXPLORADOR";
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+		color: $color-green;
+	}
+}
+
+
 /*-----------------------GENERAL---------------------------*/
+
 html,body{
   padding: 0;
   margin: 0;
@@ -9,6 +29,11 @@ html,body{
   height: 100%;
   //overflow: auto;
   text-rendering: geometricPrecision;
+   
+}
+a {
+	color: inherit;
+	text-decoration: none;
 }
 ::selection {
 	background: $color-green;
@@ -27,12 +52,17 @@ h1, h2, h3, h4, h5, h6, p {
 	margin: 0;
 	padding: 0;
 }
+
 .flex-container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-end;
 	align-items: center;
 	height: 100%;
+	@media screen and (max-width: 480px) {
+		margin-top: 1.5rem;
+		align-items: flex-start;
+	}
 }
 .container {
 	position: relative;
@@ -41,6 +71,22 @@ h1, h2, h3, h4, h5, h6, p {
 	max-width: 90%;
 	margin: 0 auto;
 }
+canvas {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 10;
+	width: 100%;
+}
+/*.callout {
+	a {
+		color: $color-yellow;
+		transition: color 0.5s ease-in-out;
+		&:hover {
+			color: $color-white;
+		}
+	}
+}*/
 
 
 /*-----------------------HELPERS---------------------------*/
@@ -127,6 +173,23 @@ h1, h2, h3, h4, h5, h6, p {
 #main-nav, .line-separator, .logo-container, #info-nav {
 	z-index: $capa2;
 }
+#home {
+	display: block;
+	width: 3.5em;
+	fill: white;
+	transition: fill 0.1s ease-in-out;
+	margin-bottom: 20px;
+	//border: 3px solid $color-white;
+	//padding: 0.5em;
+	&:hover {
+	fill: $color-yellow;
+	}
+	@media screen and (max-width: 480px) {
+		width: 2em;
+	}
+}
+
+
 .menu {
 	position: fixed;
 	right: 0;
@@ -146,34 +209,44 @@ h1, h2, h3, h4, h5, h6, p {
 		border-left: 15px solid $color-black;
 	}
 }
+
 .opened {
 	transform: translateX(0);
 	z-index: $capa3;
 	//box-shadow: -7px 0px 100px;
 }
-.home {
-	display: inline-block;
-	margin-bottom: 1.5em;
-	border-bottom: 5px solid $color-white;
-}
+
 
 .inner-menu {
+	display: inline;
 	text-transform: uppercase;
 	font-weight: 600;
 	list-style-type: none;
 	color: $color-white;
-	transition: color 0.2s ease; 
+	transition: color 0.2s ease;
 	&:hover {
 		color: $color-yellow;
 		cursor: pointer;
 	}
+	a {
+		display: inline;
+		font-size: 1em;
+		@media screen and (max-width: 480px) {
+			font-size: 0.8em;
+		}
+	}
 }
 .inner-menu-subtxt {
-	font-size: 0.5em;
+	font-size: 0.6em;
 	font-weight: 200;
+	letter-spacing: 1px;
 	display: block;
 	color: $color-black;
 	text-transform: none;
+	margin-bottom: 10px;
+	@media screen and (max-width: 480px) {
+		margin-bottom: 2px;
+	}
 }
 .line-separator {
 	flex-grow: 1;
@@ -196,6 +269,9 @@ h1, h2, h3, h4, h5, h6, p {
 
 .main-logo {
 	width: 50px;
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 #info-nav {
@@ -211,33 +287,53 @@ h1, h2, h3, h4, h5, h6, p {
 	right: 2rem;
 	border-radius: 0;
 	background-color: $color-white;
-	padding: 1em 0.8em;
+	width: 60px;
+	height: 60px;
+	padding: 10px 17px;
 	box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 	z-index: $capa3;
+	box-sizing: border-box;
 	transition: all 0.2s ease-in-out;
 	&:hover {
 		cursor: pointer;
 		border-radius: 2em;
 	}
+	@media screen and (max-width: 480px) {
+		top: 0.5rem;
+		right: 0.5rem;
+	}
 	.menu-line {
 		display: block;
+		margin: 7px auto;
 		position: relative;
-		height: 3px;
-		width: 1.5em;
-		margin-bottom: 4px;
+		height: 4px;
+		width: 100%;
 		background-color: $color-black;
-		border-radius: 1px;
-		transition: transform $transition-velocity ease-in-out; 
-		&:last-child {
-			margin-bottom: 0;
-		}
+		//border-radius: 3px;
+		transition: all $transition-velocity ease-in-out; 
+		transform-origin: 50% 50%;
 	}
 	.menu-line-1 {
-		transform: rotate(210deg);
+		transform: translateY(11px) rotate(45deg);
+		background-color: $color-red;
+		
+	}
+	.menu-line-2 {
+		background-color: $color-red;
+		opacity: 0;
+		
 	}
 	.menu-line-3 {
-		transform: rotate(150deg);
+		transform: translateY(-11px) rotate(-45deg);
+		background-color: $color-red;	
+		//opacity: 0;		
 	}
+}
+
+.circle-menu {
+	border-radius: 2em;
+	background-color: #000;
+	box-shadow: 1px 1px 15px;
 }
 
 /*-----------------------HEADER---------------------------*/
@@ -251,8 +347,21 @@ h1, h2, h3, h4, h5, h6, p {
 	//background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjhkMjAzIj48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZjYyOSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+CjxwYXRoIGQ9Ik0yOCAwTDI4IDM0TDAgNTBMMCA4NEwyOCAxMDBMNTYgODRMNTYgNTBMMjggMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZTUwMyIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==");
 	//background-size: cover;
 	text-align: center;
-	background-image:url(data:image/svg+xml;base64,CiAgPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nMTA2JyBoZWlnaHQ9JzE2OS42JyB2aWV3Qm94PScwIDAgMTAgMTYnPgogICAgPGcgaWQ9J2MnPgogICAgICA8cGF0aCBmaWxsPScjMDA3ZmI2JyBkPSdNMCAwbDUgM3Y1bC01IC0zeicvPgogIAkJPHBhdGggZmlsbD0nIzAwYjJmZicgZD0nTTEwIDBsLTUgM3Y1bDUgLTMnLz4KICAJPC9nPgogIAk8dXNlIHg9JzUnIHk9JzgnIHhsaW5rOmhyZWY9JyNjJyAvPgogIAk8dXNlIHg9Jy01JyB5PSc4JyB4bGluazpocmVmPScjYycgLz4KICA8L3N2Zz4KICA=);
-	background-color: $color-blue;
+	//background-image:url(data:image/svg+xml;base64,CiAgPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nMTA2JyBoZWlnaHQ9JzE2OS42JyB2aWV3Qm94PScwIDAgMTAgMTYnPgogICAgPGcgaWQ9J2MnPgogICAgICA8cGF0aCBmaWxsPScjMDA3ZmI2JyBkPSdNMCAwbDUgM3Y1bC01IC0zeicvPgogIAkJPHBhdGggZmlsbD0nIzAwYjJmZicgZD0nTTEwIDBsLTUgM3Y1bDUgLTMnLz4KICAJPC9nPgogIAk8dXNlIHg9JzUnIHk9JzgnIHhsaW5rOmhyZWY9JyNjJyAvPgogIAk8dXNlIHg9Jy01JyB5PSc4JyB4bGluazpocmVmPScjYycgLz4KICA8L3N2Zz4KICA=);
+	background-color: $color-green;
+	
+	background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc2NycgaGVpZ2h0PSc2Nyc+Cgk8cmVjdCB3aWR0aD0nMjAwJScgaGVpZ2h0PScyMDAlJyBmaWxsLW9wYWNpdHk9JzAuMTMnIGZpbGw9JyMwMDAwMDAnIHRyYW5zZm9ybT0ncm90YXRlKDQ1KScvPgoJPHJlY3QgeD0nLTgwJScgeT0nNzAlJyB3aWR0aD0nMjAwJScgaGVpZ2h0PScyMDAlJyBmaWxsLW9wYWNpdHk9JzAuMjYnIGZpbGw9JyMwMDAwMDAnIHRyYW5zZm9ybT0ncm90YXRlKC00NSknLz4KPC9zdmc+);
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+		opacity: 0.5;
+	}
+
 	.main-logo {
 		display: inline-block;
 		width: 4.2rem;
@@ -270,12 +379,18 @@ header h1 {
 	font-size: 3rem;
 	font-weight: 300;
 	color: $color-white;
+	@media screen and (max-width: 480px) {
+		font-size: 2rem;
+	}
 }
 header h2 {
 	font-family: $font-main;
 	font-size: 3rem;
 	font-weight: 200;
 	color: $color-white;
+	@media screen and (max-width: 480px) {
+		font-size: 2rem;
+	}
 }
 
 .icon-arrow {
@@ -340,11 +455,21 @@ header h2 {
 /*-----------------------QUE---------------------------*/
 
 #que {
+	display: flex;
+	align-items: center;
 	box-sizing: border-box;
 	width: 100%;
 	text-align: center;
 	padding-top: 7rem;
-}
+	background-color: $color-red;
+	transition: background-color 0.3s ease-in-out;
+	h2, h3 {
+		position: relative;
+		color: white;
+		font-weight: 200;
+		}
+	}
+
 /*.services-grid {
 	display: flex;
 	position: relative;
@@ -522,11 +647,19 @@ header h2 {
 
 /*-----------------------PORQUE---------------------------*/
 #porque {
+	display: flex;
+	align-items: center;
 	height: 100vh;
-	padding-top: 7rem;
 	box-sizing: border-box;
 	.container {
 		text-align: center;
+		p {
+			display: block;
+		}
+	}
+	.low {
+		font-weight: bold;
+		transform: translateY(-500%);
 	}
 }
 
@@ -537,6 +670,8 @@ header h2 {
 	text-align: center;
 	background: url('../images/como_background.jpg') center no-repeat;
 	background-size: cover;
+	height: 100vh;
+	box-sizing: border-box;
 	&:before {
 		content: "";
 		position: absolute;
@@ -631,15 +766,22 @@ footer {
 	}
 }
 .social-media {
-	margin: 5rem auto;
+	//margin: 8rem auto;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
 	align-items: center;
-	width: 100%;
-	.red-logo {
-		width: 5rem;
-		margin-right: 1em;
+	width: 70%;
+	margin: 0 auto;
+	@media screen and (max-width: 480px) {
+		width: 100%;
+	}
+	.portafolio-logo {
+		width: 10rem;
+		margin-right: 7em;
 		cursor: pointer;
+		z-index: 100;
+		
 		svg {
 			transition: fill 0.1s ease-in-out;
 		}
@@ -651,8 +793,87 @@ footer {
 				fill: $color-green;
 			}
 		}
+
+		@media screen and (max-width: 480px) {
+			width: 8rem;
+			margin-right: 0;
+		}
 	}
 }
+/*-----------------------CONTACTO---------------------------*/
+#contacto {
+	background-color: $color-yellow;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	.contact-box {
+		min-width: 300px;
+		box-sizing: border-box;
+		display: flex;
+		position: relative;
+		align-items: center;
+		width: 50%;
+		margin: 0 auto;
+		background-color: $color-green;
+		padding: 0 20px;
+	}
+	.main-logo {
+		min-width: 50px; 
+		align-self: flex-start;
+		.st0, .st1 {
+			fill: $color-yellow;
+		}
+	}
+	.vertical-line {
+		align-self: flex-end;
+		width: 5px;
+		height: 14em;
+		background-color: $color-yellow;
+		margin-left: 0;
+		margin-right: 10px;
+	}
+	.contact-form {
+
+		color: $color-white;
+		h2 {
+			margin-bottom: 25px;
+		}
+		p {
+			letter-spacing: 0.3px;
+			margin-bottom: 10px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			a {
+				transition: color 0.5s ease-in-out;
+				&:hover {
+					color: $color-yellow;
+				}
+			}
+		}
+
+	}
+	.redes-sociales {
+		margin-top: 25px;
+		width: 100%;
+		//text-align: center;
+		svg {
+			display: inline-block;
+			margin-right: 30px;
+			fill: $color-yellow;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+	
+}
+
+
+
+
+
 
 /*-----------------------ANIMATIONS---------------------------*/
 #icon-arrow-outer {
@@ -672,6 +893,7 @@ footer {
 }
 
 .blink {
+	font-size: 1em;
 	animation: blink 0.8s infinite;
 }
 
@@ -687,4 +909,4 @@ footer {
 
 
 /*-----------------------MEDIA QUERYS---------------------------*/
-@import '_mediaQuery.scss';
+@import '_media_query.scss';
