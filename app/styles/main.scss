@@ -109,6 +109,8 @@ canvas {
 	text-decoration: none;
 	margin: 3em 0;
 	cursor: pointer;
+	font-family: $font-main;
+	font-size: 1.2em;
 }
 .btn-white {
 	background-color: transparent;
@@ -288,7 +290,7 @@ canvas {
 	border-radius: 0;
 	background-color: $color-white;
 	width: 60px;
-	height: 60px;
+	height: auto;
 	padding: 10px 17px;
 	box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 	z-index: $capa3;
@@ -858,6 +860,9 @@ footer {
 		margin-top: 25px;
 		width: 100%;
 		//text-align: center;
+		a {
+			margin-right: 25px;
+		}
 		svg {
 			display: inline-block;
 			margin-right: 30px;

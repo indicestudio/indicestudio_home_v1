@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
 
-	jQuery('.menu-button, .main-logo').on('click', function(event){
+	jQuery('.menu-button, .main-logo, .btn-callout').on('click', function(event){
 		jQuery('.menu-line:eq(0)').toggleClass('menu-line-1');
 		jQuery('.menu-line:eq(1)').toggleClass('menu-line-2');
 		jQuery('.menu-line:eq(2)').toggleClass('menu-line-3');
