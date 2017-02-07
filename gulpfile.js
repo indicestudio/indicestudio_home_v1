@@ -1,3 +1,6 @@
+// Local IP Address for browserSync
+const ip = '192.168.0.14';
+
 // generated on 2016-08-14 using generator-webapp 2.1.0
 const gulp = require('gulp');
 const gulpLoadPlugins = require('gulp-load-plugins');
@@ -107,6 +110,7 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', ['views', 'styles', 'scripts', 'fonts'], () => {
   browserSync({
+    host: ip,
     notify: false,
     port: 9000,
     server: {

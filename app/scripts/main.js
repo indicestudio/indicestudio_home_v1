@@ -36,7 +36,7 @@ jQuery(document).ready(function(){
 
 	/* ----typed js ------*/
 	$('.header-subtitle').typed({
-		strings: ['indicestudio', 'multimedia', 'expertos', 'soluciones', 'chillanejos'],
+		strings: ['indicestudio', 'multimedia', 'marketing', 'soluciones', 'chillanejos'],
 		typeSpeed: 50,
 		showCursor: false,
 		loop: true,
